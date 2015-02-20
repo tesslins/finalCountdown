@@ -1,0 +1,1 @@
+countdown timer with only (only!) js
