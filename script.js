@@ -34,7 +34,9 @@ function tick() {
 }
 
 function pauseTick() {
-
+    console.log("pauseTick called");
+    var pauseTimeDisplay = document.getElementById("time").innerHTML;
+    document.getElementById("time").innerHTML = pauseTimeDisplay;
 }
 
 function startCountdown() {
@@ -60,17 +62,21 @@ function createPauseButton() {
     pauseButton.setAttribute("type", "button");
     pauseButton.setAttribute("value", "Pause Countdown");
     document.getElementById("pauseTime").appendChild(pauseButton);
+    createHaterButton();
     pauseButton.onclick = function () {
         pauseButton.setAttribute("value", "Release the Countdown");
+
+        document.getElementById("iHateCountdowns").style.display = "block";
+
         pauseTick();
 
-        var delay = 2000;
-        setTimeout( createHaterButton, delay);
     };
 }
 
 function createHaterButton() {
     // create hater button
+    console.log('hi hater');
+    document.getElementById("iHateCountdowns").style.display = "none";
     var haterButton = document.createElement("input");
     haterButton.setAttribute("type", "button");
     haterButton.setAttribute("value", "I hate countdowns");
@@ -95,3 +101,5 @@ window.onload =  function () {
     document.getElementById("inputTime").appendChild(inputMinutes);
     document.getElementById("inputTime").appendChild(startButton);
 };
+
+
