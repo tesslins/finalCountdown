@@ -1,1 +1,1 @@
-countdown timer with only (only!) js
+countdown timer (aka experiments in pure javascript)
