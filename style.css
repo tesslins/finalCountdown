@@ -29,6 +29,10 @@ input[type=button] {
 	margin-bottom: 20px;
 }
 
+#resumeTime {
+	display: none;
+}
+
 #ihateCountdowns {
 	display: none;
 }

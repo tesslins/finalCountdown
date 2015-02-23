@@ -8,8 +8,8 @@ function resetPage() {
 }
 
 function tick() {
-    // grab the h1
     if (running === true) {
+        // grab the h1
         var timeDisplay = document.getElementById("time");
         
         // turn seconds into mm:ss
@@ -27,7 +27,7 @@ function tick() {
         
         // stop if down to zero
         if (secondsRemaining === 0) {
-            alert("Done!");
+            alert("Ding, you are free!");
             clearInterval(intervalHandle);
             resetPage();
         }
@@ -36,19 +36,12 @@ function tick() {
     }
 }
 
-function pauseTick() {
-    running = false;
-    console.log("pauseTick called");
-    var pauseTimeDisplay = document.getElementById("time").innerHTML;
-    document.getElementById("time").innerHTML = pauseTimeDisplay;
-}
-
 function startCountdown() {
     // get contents of the "minutes" text box
     var minutes = document.getElementById("minutes").value;
     // check if not a number
     if (isNaN(minutes)) {
-        alert("Please enter a number!");
+        alert("Please enter only a number!");
         return;
     }
     // how many seconds?
@@ -70,7 +63,8 @@ function createPauseButton() {
     document.getElementById("pauseTime").appendChild(pauseButton);
     // createHaterButton();
     pauseButton.onclick = function () {
-        pauseTick();
+        running = false;
+        document.getElementById("resumeTime").style.display = "block";
     };
 }
 
@@ -80,9 +74,8 @@ function createResumeButton() {
     resumeButton.setAttribute("value", "Release the Countdown");
     document.getElementById("resumeTime").appendChild(resumeButton);
     resumeButton.onclick = function() {
-        var pauseTimeDisplay = document.getElementById("time").innerHTML;
-        document.getElementById("time").innerHTML = pauseTimeDisplay;
-        tick(pauseTimeDisplay);
+        running = true;
+
     };
 }
 
