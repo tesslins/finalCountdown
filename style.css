@@ -25,14 +25,14 @@ input[type=button] {
 	font-size: 1em;
 }
 
+#time {
+	padding-left: 20px;
+}
+
 #pauseTime input[type=button] {
 	margin-bottom: 20px;
 }
 
 #resumeTime {
-	display: none;
-}
-
-#ihateCountdowns {
 	display: none;
 }

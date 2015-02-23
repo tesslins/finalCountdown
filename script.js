@@ -61,7 +61,6 @@ function createPauseButton() {
     pauseButton.setAttribute("type", "button");
     pauseButton.setAttribute("value", "Pause Countdown");
     document.getElementById("pauseTime").appendChild(pauseButton);
-    // createHaterButton();
     pauseButton.onclick = function () {
         running = false;
         document.getElementById("resumeTime").style.display = "block";
@@ -79,15 +78,37 @@ function createResumeButton() {
     };
 }
 
-// function createHaterButton() {
-//     // create hater button
-//     console.log('hi hater');
-//     document.getElementById("iHateCountdowns").style.display = "none";
-//     var haterButton = document.createElement("input");
-//     haterButton.setAttribute("type", "button");
-//     haterButton.setAttribute("value", "I hate countdowns");
-//     document.getElementById("iHateCountdowns").appendChild(haterButton);
-// }
+function createHaterLink() {
+    // show hater link after 5 seconds
+    setTimeout(function() {
+        // create hater link, set href and inner html
+        var haterButton = document.createElement("a");
+        haterButton.setAttribute("href", "#" );
+        haterButton.innerHTML= "also, I hate countdowns";
+
+        // choose link randomly from array
+        haterButton.onclick = function () {
+
+            var haterLinks = [
+                'https://medium.com/message/just-checking-in-d2b5540f0064',
+                'http://wormaesthetics.tumblr.com/post/111364233097/a-dialogue-on-marginal-geology-miguel-fernandez',
+                'http://water.usgs.gov/data/',
+                'http://techblog.netflix.com/2015/02/a-microscope-on-microservices.html'
+            ];
+
+            var max = haterLinks.length - 1;
+            var min = 0;
+            var element = Math.floor(Math.random()*(max-min+1)+min);
+
+            haterButton.href = haterLinks[element];
+
+            document.getElementById("iHateCountdowns").style.display = "block";
+        };
+
+    // append haterlink to div
+    document.getElementById("iHateCountdowns").appendChild(haterButton);
+    }, 5000);
+}
 
 // as soon as the page is loaded...
 window.onload =  function () {
@@ -105,6 +126,7 @@ window.onload =  function () {
         startCountdown();
         createPauseButton();
         createResumeButton();
+        createHaterLink();
     };
     // add to the DOM, to the div called "inputTime"
     document.getElementById("inputTime").appendChild(inputMinutes);
